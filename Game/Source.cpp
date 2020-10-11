@@ -3,11 +3,11 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1080, 720), "Game from scratch!");
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game from scratch!");
 
 	////// Texture
 	sf::Texture playerTexture;
-	if (!playerTexture.loadFromFile("img/man.png"))
+	if (!playerTexture.loadFromFile("img/girl.jpg"))
 	{
 		std::cout << "Load failed" << std::endl;
 	}
@@ -16,7 +16,7 @@ int main()
 	sf::Sprite shapeSprite;
 	shapeSprite.setTexture(playerTexture);
 	shapeSprite.setTextureRect(sf::IntRect(0, 0, 46, 59));
-
+	 
 	while (window.isOpen())
 	{
 		window.draw(shapeSprite);
