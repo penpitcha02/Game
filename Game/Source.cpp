@@ -3,45 +3,36 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game from scratch!");
-
-	////// Texture
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar);
+	sf::RectangleShape player(sf::Vector2f(300.0f, 425.0f));
+	player.setPosition(0.0f, 0.0f);
 	sf::Texture playerTexture;
-	if (!playerTexture.loadFromFile("img/girl.jpg"))
-	{
-		std::cout << "Load failed" << std::endl;
-	}
+	playerTexture.loadFromFile("img/grandpa.png");
+	player.setTexture(&playerTexture);
 
-	////// Sprite
-	sf::Sprite shapeSprite;
-	shapeSprite.setTexture(playerTexture);
-	shapeSprite.setTextureRect(sf::IntRect(0, 0, 46, 59));
-	 
+	sf::Vector2u textureSize = playerTexture.getSize();
+	textureSize.x /= 5;
+	textureSize.y /= 3;
+
+	player.setTextureRect(sf::IntRect(textureSize.x * 4, textureSize.y * 2, textureSize.x, textureSize.y));
+
 	while (window.isOpen())
 	{
-		window.draw(shapeSprite);
-		window.display();
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		sf::Event evnt;
+		while (window.pollEvent(evnt))
 		{
-			shapeSprite.move(.1f, 0.f);
+			switch (evnt.type)
+			{
+			case sf::Event::Closed:
+				window.close();
+				break;
+			}
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		{
-			shapeSprite.move(-.1f, 0.f);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		{
-			shapeSprite.move(0.f, -.1f);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		{
-			shapeSprite.move(0.f, .1f);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-		{
-			window.close();
-		}
+
 		window.clear();
+		window.draw(player);
+		window.display();
 	}
+
 	return 0;
 }
