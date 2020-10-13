@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include"Animation.h"
 
 int main()
 {
@@ -7,17 +8,18 @@ int main()
 	sf::RectangleShape player(sf::Vector2f(300.0f, 425.0f));
 	player.setPosition(0.0f, 0.0f);
 	sf::Texture playerTexture;
-	playerTexture.loadFromFile("img/grandpa.png");
+	playerTexture.loadFromFile("img/grandpa2.png");
 	player.setTexture(&playerTexture);
 
-	sf::Vector2u textureSize = playerTexture.getSize();
-	textureSize.x /= 5;
-	textureSize.y /= 3;
+	Animation animation(&playerTexture, sf::Vector2u(4, 2), 0.3f);
 
-	player.setTextureRect(sf::IntRect(textureSize.x * 4, textureSize.y * 2, textureSize.x, textureSize.y));
+	float deltaTime = 0.0f;
+	sf::Clock clock;
 
 	while (window.isOpen())
 	{
+		deltaTime = clock.restart().asSeconds();
+
 		sf::Event evnt;
 		while (window.pollEvent(evnt))
 		{
@@ -29,7 +31,10 @@ int main()
 			}
 		}
 
-		window.clear();
+		animation.Update(0, deltaTime);
+		player.setTextureRect(animation.uvRect);
+
+		window.clear(sf::Color(150, 150, 150));
 		window.draw(player);
 		window.display();
 	}
