@@ -4,14 +4,26 @@
 
 int main()
 {
+
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
+	
+	//////grandpa
 	sf::Texture playerTexture;
 	playerTexture.loadFromFile("img/grandpa2.png");
 
 	Player player(&playerTexture, sf::Vector2u(4, 2), 0.3f,200.0f);
-
+	 
 	float deltaTime = 0.0f;
 	sf::Clock clock;
+
+	//////background
+	sf::RectangleShape background(sf::Vector2f(3840.0f, 1080.0f));
+	background.setPosition(0.0f, 40.0f);
+	sf::Texture backgroundTexture;
+	backgroundTexture.loadFromFile("img/background2.png");
+	background.setTexture(&backgroundTexture);
+	
 
 	bool isFullscreen = true;
 
@@ -36,7 +48,7 @@ int main()
 					}
 					else
 					{
-						window.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+						window.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Fullscreen);
 
 						isFullscreen = true;
 					}
@@ -54,8 +66,11 @@ int main()
 		}
 
 		player.Update(deltaTime);
+		view.setCenter(player.GetPosition());
 
-		window.clear(sf::Color(150, 150, 150));
+		window.clear();
+		window.setView(view);
+		window.draw(background);
 		player.Draw(window);
 		window.display();
 	}
