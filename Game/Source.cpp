@@ -1,20 +1,19 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include"Animation.h"
+#include"Player.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar);
-	sf::RectangleShape player(sf::Vector2f(300.0f, 425.0f));
-	player.setPosition(0.0f, 0.0f);
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
 	sf::Texture playerTexture;
 	playerTexture.loadFromFile("img/grandpa2.png");
-	player.setTexture(&playerTexture);
 
-	Animation animation(&playerTexture, sf::Vector2u(4, 2), 0.3f);
+	Player player(&playerTexture, sf::Vector2u(4, 2), 0.3f,200.0f);
 
 	float deltaTime = 0.0f;
 	sf::Clock clock;
+
+	bool isFullscreen = true;
 
 	while (window.isOpen())
 	{
@@ -25,17 +24,39 @@ int main()
 		{
 			switch (evnt.type)
 			{
+			case sf::Event::KeyReleased:
+				switch (evnt.key.code)
+				{
+				case sf::Keyboard::Return:
+					if (true == isFullscreen)
+					{
+						window.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Default);
+
+						isFullscreen = false;
+					}
+					else
+					{
+						window.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+
+						isFullscreen = true;
+					}
+
+					break;
+
+				}
+
+				break;
+
 			case sf::Event::Closed:
 				window.close();
 				break;
 			}
 		}
 
-		animation.Update(0, deltaTime);
-		player.setTextureRect(animation.uvRect);
+		player.Update(deltaTime);
 
 		window.clear(sf::Color(150, 150, 150));
-		window.draw(player);
+		player.Draw(window);
 		window.display();
 	}
 
