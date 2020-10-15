@@ -13,6 +13,7 @@ public:
 
 	sf::Vector2f GetPosition() { return body.getPosition(); }
 
+
 private:
 	sf::RectangleShape body;
 	Animation animation;
