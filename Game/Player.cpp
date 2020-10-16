@@ -51,6 +51,7 @@ void Player::Update(float deltaTime)
 	//Right collosion
 	if (body.getPosition().x + body.getGlobalBounds().width > 3840.0f)
 		body.setPosition(3840.0f - body.getGlobalBounds().width,body.getPosition().y);
+
 }
 
 

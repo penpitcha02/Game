@@ -22,6 +22,12 @@ int main()
 	float deltaTime = 0.0f;
 	sf::Clock clock;
 
+	//knife
+	sf::Texture knifeTexture;
+	knifeTexture.loadFromFile("img/knife.png");
+
+	Knife knife(&knifeTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
+
 	//background
 	sf::RectangleShape background(sf::Vector2f(5760.0f, 1080.0f));
 	background.setPosition(-960.0f, 40.0f);
@@ -68,6 +74,7 @@ int main()
 		}
 
 		player.Update(deltaTime);
+		knife.Update(deltaTime);
 		view.setCenter(player.GetPosition());
 
 		//Render
@@ -75,6 +82,7 @@ int main()
 		window.setView(view);
 		window.draw(background);
 		player.Draw(window);
+		knife.Draw(window);
 		window.display();
 	}
 
