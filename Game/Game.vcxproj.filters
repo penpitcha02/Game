@@ -27,6 +27,9 @@
     <ClCompile Include="Knife.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sword.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -36,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Knife.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -57,7 +57,8 @@ void Knife::Update(float deltaTime)
 
 void Knife::Draw(sf::RenderWindow& window)
 {
-	window.draw(knife);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+		window.draw(knife);
 }
 
-
+     

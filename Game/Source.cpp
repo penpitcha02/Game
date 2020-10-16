@@ -13,7 +13,7 @@ int main()
 	//View
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
 	
-	//grandpa
+	//Grandpa
 	sf::Texture playerTexture;
 	playerTexture.loadFromFile("img/grandpa2.png");
 
@@ -22,13 +22,19 @@ int main()
 	float deltaTime = 0.0f;
 	sf::Clock clock;
 
-	//knife
+	//Knife
 	sf::Texture knifeTexture;
-	knifeTexture.loadFromFile("img/knife.png");
+	knifeTexture.loadFromFile("img/knife2.png");
 
 	Knife knife(&knifeTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
 
-	//background
+	//Sword
+	sf::Texture swordTexture;
+	swordTexture.loadFromFile("img/sword.png");
+
+	Sword sword(&swordTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
+
+	//Background
 	sf::RectangleShape background(sf::Vector2f(5760.0f, 1080.0f));
 	background.setPosition(-960.0f, 40.0f);
 	sf::Texture backgroundTexture;
@@ -71,18 +77,21 @@ int main()
 				window.close();
 				break;
 			}
+
 		}
 
 		player.Update(deltaTime);
 		knife.Update(deltaTime);
+		sword.Update(deltaTime);
 		view.setCenter(player.GetPosition());
 
 		//Render
 		window.clear();
 		window.setView(view);
 		window.draw(background);
-		player.Draw(window);
-		knife.Draw(window);
+		sword.Draw(window);
+		player.Draw(window); 
+		knife.Draw(window);  
 		window.display();
 	}
 
