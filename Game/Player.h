@@ -1,8 +1,6 @@
 #pragma once
 #include<SFML/Graphics.hpp>
 #include"Animation.h"
-#include"Knife.h"
-#include"Sword.h"
 
 class Player
 {

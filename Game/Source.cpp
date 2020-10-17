@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include"Player.h"
+#include "Game.h"
 
 int main()
 {
@@ -9,6 +9,10 @@ int main()
 
 	//Fullscreen
 	bool isFullscreen = true;
+	
+	//DeltaTime
+	float deltaTime = 0.0f;
+	sf::Clock clock;
 
 	//View
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
@@ -19,9 +23,7 @@ int main()
 
 	Player player(&playerTexture, sf::Vector2u(4, 2), 0.3f,500.0f);
 	 
-	float deltaTime = 0.0f;
-	sf::Clock clock;
-
+	
 	//Knife
 	sf::Texture knifeTexture;
 	knifeTexture.loadFromFile("img/knife2.png");
@@ -34,11 +36,25 @@ int main()
 
 	Sword sword(&swordTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
 
+
+	//Machine
+	sf::Texture machineTexture;
+	machineTexture.loadFromFile("img/machine2.png");
+
+	Machine machine(&machineTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
+
+	//Shop
+	sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
+	shop.setPosition(-960.0f, 40.0f);
+	sf::Texture shopTexture;
+	shopTexture.loadFromFile("img/shop.png");
+	shop.setTexture(&shopTexture);
+
 	//Background
 	sf::RectangleShape background(sf::Vector2f(5760.0f, 1080.0f));
 	background.setPosition(-960.0f, 40.0f);
 	sf::Texture backgroundTexture;
-	backgroundTexture.loadFromFile("img/background3.png");
+	backgroundTexture.loadFromFile("img/background4.png");
 	background.setTexture(&backgroundTexture);
 
 	while (window.isOpen())
@@ -79,19 +95,21 @@ int main()
 			}
 
 		}
-
 		player.Update(deltaTime);
 		knife.Update(deltaTime);
 		sword.Update(deltaTime);
+		machine.Update(deltaTime);
 		view.setCenter(player.GetPosition());
 
 		//Render
-		window.clear();
+		window.clear(); 
 		window.setView(view);
 		window.draw(background);
 		sword.Draw(window);
 		player.Draw(window); 
-		knife.Draw(window);  
+		knife.Draw(window);
+		window.draw(shop);
+		machine.Draw(window);
 		window.display();
 	}
 

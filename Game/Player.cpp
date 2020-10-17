@@ -7,8 +7,8 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, 
 	row = 0;
 	faceRight = true;
 
-	body.setSize(sf::Vector2f(300.0f, 425.0f));
-	body.setOrigin(body.getSize().x/2.0f,0);
+	body.setSize(sf::Vector2f(375.0f, 531.25f));
+	body.setOrigin(body.getSize().x/2.0f, body.getSize().x / 4.0f);
 	body.setPosition(1920.0f, 575.0f);
 	body.setTexture(texture);
 }
@@ -49,8 +49,8 @@ void Player::Update(float deltaTime)
 	if (body.getPosition().x < 0.f)
 		body.setPosition(0.f, body.getPosition().y);
 	//Right collosion
-	if (body.getPosition().x + body.getGlobalBounds().width > 3840.0f)
-		body.setPosition(3840.0f - body.getGlobalBounds().width,body.getPosition().y);
+	if (body.getPosition().x + body.getGlobalBounds().width > 4100.0f)
+		body.setPosition(4100.0f - body.getGlobalBounds().width,body.getPosition().y);
 
 }
 

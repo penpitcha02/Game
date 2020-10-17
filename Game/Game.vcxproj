@@ -147,14 +147,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Animation2.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Knife.cpp" />
+    <ClCompile Include="Machine.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sword.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Animation2.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Knife.h" />
+    <ClInclude Include="Machine.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sword.h" />
   </ItemGroup>

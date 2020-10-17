@@ -7,8 +7,8 @@ Sword::Sword(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, fl
 	row = 0;
 	faceRight = true;
 
-	sword.setSize(sf::Vector2f(300.0f, 425.0f));
-	sword.setOrigin(sword.getSize().x / 2.0f, 0);
+	sword.setSize(sf::Vector2f(375.0f, 531.25f));
+	sword.setOrigin(sword.getSize().x / 2.0f, sword.getSize().x / 4.0f);
 	sword.setPosition(1920.0f, 575.0f);
 	sword.setTexture(texture);
 }
