@@ -38,10 +38,17 @@ int main()
 
 
 	//Machine
-	sf::Texture machineTexture;
-	machineTexture.loadFromFile("img/machine2.png");
+	sf::Texture machineanimationTexture;
+	machineanimationTexture.loadFromFile("img/machineanimation.png");
 
-	Machine machine(&machineTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
+	Machineanimation machineanimation(&machineanimationTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
+
+	sf::RectangleShape machine(sf::Vector2f(375.0f, 531.25f));
+	machine.setOrigin(machine.getSize().x / 2.0f, 0);
+	machine.setPosition(2740.0f, 440.0f);
+	sf::Texture machineTexture;
+	machineTexture.loadFromFile("img/machine.png");
+	machine.setTexture(&machineTexture);
 
 	//Shop
 	sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
@@ -98,18 +105,26 @@ int main()
 		player.Update(deltaTime);
 		knife.Update(deltaTime);
 		sword.Update(deltaTime);
-		machine.Update(deltaTime);
+		machineanimation.Update(deltaTime);
 		view.setCenter(player.GetPosition());
 
 		//Render
 		window.clear(); 
+
 		window.setView(view);
 		window.draw(background);
+
 		sword.Draw(window);
 		player.Draw(window); 
 		knife.Draw(window);
+
 		window.draw(shop);
-		machine.Draw(window);
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+			machineanimation.Draw(window);
+		else
+			window.draw(machine);
+
 		window.display();
 	}
 

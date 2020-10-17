@@ -3,7 +3,7 @@
 #include"Player.h"
 #include"Knife.h"
 #include"Sword.h"
-#include"Machine.h"
+#include"Machineanimation.h"
 
 class Game
 {
