@@ -49,8 +49,8 @@ void Sword::Update(float deltaTime)
 	if (sword.getPosition().x < 0.f)
 		sword.setPosition(0.f, sword.getPosition().y);
 	//Right collosion
-	if (sword.getPosition().x + sword.getGlobalBounds().width > 3840.0f)
-		sword.setPosition(3840.0f - sword.getGlobalBounds().width, sword.getPosition().y);
+	if (sword.getPosition().x + sword.getGlobalBounds().width > 4100.0f)
+		sword.setPosition(4100.0f - sword.getGlobalBounds().width, sword.getPosition().y);
 }
 
 void Sword::Draw(sf::RenderWindow& window)

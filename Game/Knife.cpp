@@ -49,8 +49,8 @@ void Knife::Update(float deltaTime)
 	if (knife.getPosition().x < 0.f)
 		knife.setPosition(0.f, knife.getPosition().y);
 	//Right collosion
-	if (knife.getPosition().x + knife.getGlobalBounds().width > 3840.0f)
-		knife.setPosition(3840.0f - knife.getGlobalBounds().width, knife.getPosition().y);
+	if (knife.getPosition().x + knife.getGlobalBounds().width > 4100.0f)
+		knife.setPosition(4100.0f - knife.getGlobalBounds().width, knife.getPosition().y);
 
 }
 
