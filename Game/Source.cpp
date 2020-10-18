@@ -114,29 +114,38 @@ int main()
 			}
 
 		}
+
 		player.Update(deltaTime);
 		knife.Update(deltaTime);
 		sword.Update(deltaTime);
+
 		machineanimation.Update(deltaTime);
+
 		treeanimation.Update(deltaTime);
 		treeanimation2.Update(deltaTime);
+
 		view.setCenter(player.GetPosition());
 
 		//Render
+
 		window.clear(); 
 
 		window.setView(view);
 		window.draw(background);
 
+		//Tree
 		treeanimation.Draw(window);
 		treeanimation2.Draw(window);
 
+		//Weapon
 		sword.Draw(window);
 		player.Draw(window); 
 		knife.Draw(window);
 
+		//Shop
 		window.draw(shop);
 
+		//Machine
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 			machineanimation.Draw(window);
 		else
