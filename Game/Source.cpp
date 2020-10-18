@@ -76,6 +76,19 @@ int main()
 	tree2Texture.loadFromFile("img/tree2.png");
 	tree2.setTexture(&tree2Texture);
 
+	//Tree3
+	sf::Texture treeanimation3Texture;
+	treeanimation3Texture.loadFromFile("img/treeanimation3.png");
+
+	Treeanimation3 treeanimation3(&treeanimation3Texture, sf::Vector2u(4, 1), 0.25f, 500.0f);
+
+	sf::RectangleShape tree3(sf::Vector2f(960.0f, 1080.0f));
+	tree3.setOrigin(tree3.getSize().x / 2.0f, 0);
+	tree3.setPosition(820.0f, 40.0f);
+	sf::Texture tree3Texture;
+	tree3Texture.loadFromFile("img/tree3.png");
+	tree3.setTexture(&tree3Texture);
+
 	//Shop
 	sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
 	shop.setPosition(-960.0f, 40.0f);
@@ -137,10 +150,11 @@ int main()
 
 		treeanimation.Update(deltaTime);
 		treeanimation2.Update(deltaTime);
+		treeanimation3.Update(deltaTime);
 
 		view.setCenter(player.GetPosition());
 
-		//Render
+		//////Render
 
 		window.clear(); 
 
@@ -154,10 +168,16 @@ int main()
 			window.draw(tree);
 
 		//Tree2
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
 			treeanimation2.Draw(window);
 		else
 			window.draw(tree2);
+
+		//Tree
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+			treeanimation3.Draw(window);
+		else
+			window.draw(tree3);
 
 		//Weapon
 		sword.Draw(window);

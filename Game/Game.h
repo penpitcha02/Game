@@ -6,6 +6,7 @@
 #include"Machineanimation.h"
 #include"Treeanimation.h"
 #include"Treeanimation2.h"
+#include"Treeanimation3.h"
 
 class Game
 {

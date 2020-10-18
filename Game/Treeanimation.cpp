@@ -19,13 +19,10 @@ Treeanimation::~Treeanimation()
 
 void Treeanimation::Update(float deltaTime)
 {
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 		row = 0;
 
 	animation2.Update(row, deltaTime);
 	treeanimation.setTextureRect(animation2.uvRect);
-
 }
 
 
