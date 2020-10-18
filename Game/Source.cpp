@@ -50,17 +50,31 @@ int main()
 	machineTexture.loadFromFile("img/machine.png");
 	machine.setTexture(&machineTexture);
 
-	//Tree1
+	//Tree
 	sf::Texture treeanimationTexture;
 	treeanimationTexture.loadFromFile("img/treeanimation.png");
 
 	Treeanimation treeanimation(&treeanimationTexture, sf::Vector2u(4, 1), 0.25f, 500.0f);
+
+	sf::RectangleShape tree(sf::Vector2f(960.0f, 1080.0f));
+	tree.setOrigin(tree.getSize().x / 2.0f, 0);
+	tree.setPosition(0.0f, 40.0f);
+	sf::Texture treeTexture;
+	treeTexture.loadFromFile("img/tree.png");
+	tree.setTexture(&treeTexture);
 
 	//Tree2
 	sf::Texture treeanimation2Texture;
 	treeanimation2Texture.loadFromFile("img/treeanimation2.png");
 
 	Treeanimation2 treeanimation2(&treeanimation2Texture, sf::Vector2u(4, 1), 0.25f, 500.0f);
+
+	sf::RectangleShape tree2(sf::Vector2f(960.0f, 1080.0f));
+	tree2.setOrigin(tree2.getSize().x / 2.0f, 0);
+	tree2.setPosition(1700.0f, 40.0f);
+	sf::Texture tree2Texture;
+	tree2Texture.loadFromFile("img/tree2.png");
+	tree2.setTexture(&tree2Texture);
 
 	//Shop
 	sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
@@ -134,8 +148,16 @@ int main()
 		window.draw(background);
 
 		//Tree
-		treeanimation.Draw(window);
-		treeanimation2.Draw(window);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+			treeanimation.Draw(window);
+		else
+			window.draw(tree);
+
+		//Tree2
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+			treeanimation2.Draw(window);
+		else
+			window.draw(tree2);
 
 		//Weapon
 		sword.Draw(window);

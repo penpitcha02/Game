@@ -20,7 +20,7 @@ Treeanimation2::~Treeanimation2()
 void Treeanimation2::Update(float deltaTime)
 {
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 		row = 0;
 
 	animation2.Update(row, deltaTime);
