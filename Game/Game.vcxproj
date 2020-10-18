@@ -154,6 +154,8 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sword.cpp" />
+    <ClCompile Include="Treeanimation.cpp" />
+    <ClCompile Include="Treeanimation2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -163,6 +165,8 @@
     <ClInclude Include="Machineanimation.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sword.h" />
+    <ClInclude Include="Treeanimation.h" />
+    <ClInclude Include="Treeanimation2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

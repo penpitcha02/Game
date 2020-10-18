@@ -50,6 +50,18 @@ int main()
 	machineTexture.loadFromFile("img/machine.png");
 	machine.setTexture(&machineTexture);
 
+	//Tree1
+	sf::Texture treeanimationTexture;
+	treeanimationTexture.loadFromFile("img/treeanimation.png");
+
+	Treeanimation treeanimation(&treeanimationTexture, sf::Vector2u(4, 1), 0.25f, 500.0f);
+
+	//Tree2
+	sf::Texture treeanimation2Texture;
+	treeanimation2Texture.loadFromFile("img/treeanimation2.png");
+
+	Treeanimation2 treeanimation2(&treeanimation2Texture, sf::Vector2u(4, 1), 0.25f, 500.0f);
+
 	//Shop
 	sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
 	shop.setPosition(-960.0f, 40.0f);
@@ -106,6 +118,8 @@ int main()
 		knife.Update(deltaTime);
 		sword.Update(deltaTime);
 		machineanimation.Update(deltaTime);
+		treeanimation.Update(deltaTime);
+		treeanimation2.Update(deltaTime);
 		view.setCenter(player.GetPosition());
 
 		//Render
@@ -113,6 +127,9 @@ int main()
 
 		window.setView(view);
 		window.draw(background);
+
+		treeanimation.Draw(window);
+		treeanimation2.Draw(window);
 
 		sword.Draw(window);
 		player.Draw(window); 
