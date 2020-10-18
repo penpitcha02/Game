@@ -23,8 +23,6 @@ void Machineanimation::Update(float deltaTime)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 		row = 1;
-	else
-		row = 0;
 
 	animation2.Update(row, deltaTime);
 	machineanimation.setTextureRect(animation2.uvRect);
