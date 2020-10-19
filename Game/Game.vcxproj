@@ -150,6 +150,7 @@
     <ClCompile Include="Animation2.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Knife.cpp" />
+    <ClCompile Include="Machine.cpp" />
     <ClCompile Include="Machineanimation.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Animation2.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Knife.h" />
+    <ClInclude Include="Machine.h" />
     <ClInclude Include="Machineanimation.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sword.h" />

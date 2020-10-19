@@ -20,8 +20,6 @@ Machineanimation::~Machineanimation()
 
 void Machineanimation::Update(float deltaTime)
 {
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 		row = 1;
 
 	animation2.Update(row, deltaTime);

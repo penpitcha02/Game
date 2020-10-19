@@ -43,12 +43,10 @@ int main()
 
 	Machineanimation machineanimation(&machineanimationTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
 
-	sf::RectangleShape machine(sf::Vector2f(375.0f, 531.25f));
-	machine.setOrigin(machine.getSize().x / 2.0f, 0);
-	machine.setPosition(2740.0f, 440.0f);
 	sf::Texture machineTexture;
 	machineTexture.loadFromFile("img/machine.png");
-	machine.setTexture(&machineTexture);
+
+	Machine machine(&machineTexture);
 
 	//Tree
 	sf::Texture treeanimationTexture;
@@ -188,10 +186,13 @@ int main()
 		window.draw(shop);
 
 		//Machine
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			if(machine.isMouseOver(window))
 			machineanimation.Draw(window);
+		}
 		else
-			window.draw(machine);
+			machine.Draw(window);
 
 		window.display();
 	}

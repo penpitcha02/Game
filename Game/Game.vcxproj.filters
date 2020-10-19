@@ -48,6 +48,9 @@
     <ClCompile Include="Treeanimation3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Machine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Treeanimation3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Machine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
