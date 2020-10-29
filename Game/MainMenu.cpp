@@ -8,21 +8,21 @@ MainMenu::MainMenu(float width, float height)
 	//Play
 	mainMenu[0].setFont(font);
 	mainMenu[0].setFillColor(sf::Color::Blue);
-	mainMenu[0].setString("Play");
+	mainMenu[0].setString("PLAY");
 	mainMenu[0].setCharacterSize(40);
 	mainMenu[0].setPosition(1700,700);
 
 	//Score
 	mainMenu[1].setFont(font);
 	mainMenu[1].setFillColor(sf::Color::White);
-	mainMenu[1].setString("Score");
+	mainMenu[1].setString("SCORE");
 	mainMenu[1].setCharacterSize(40);
 	mainMenu[1].setPosition(1700,775);
 
 	//Quit
 	mainMenu[2].setFont(font);
 	mainMenu[2].setFillColor(sf::Color::White);
-	mainMenu[2].setString("Quit");
+	mainMenu[2].setString("QUIT");
 	mainMenu[2].setCharacterSize(40);
 	mainMenu[2].setPosition(1700,850);
 

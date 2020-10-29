@@ -6,12 +6,6 @@ int page_number;
 
 int main()
 {
-	//Window
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
-
-	//Fullscreen
-	bool isFullscreen = true;
-	
 	//DeltaTime
 	float deltaTime = 0.0f;
 	sf::Clock clock;
@@ -21,6 +15,9 @@ int main()
 
 	//MainMenu
 	MainMenu mainmenu(1920,1080);
+
+	//PauseMenu
+	PauseMenu pausemenu(1920, 1080);
 
 	//Grandpa
 	sf::Texture playerTexture;
@@ -113,57 +110,58 @@ int main()
 	backgroundTexture.loadFromFile("img/background4.png");
 	background.setTexture(&backgroundTexture);
 
-	while (window.isOpen())
+	if (page_number == 0)
 	{
-		sf::Event evnt;
-		while (window.pollEvent(evnt))
+		//MainMenu
+		sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+		while (window.isOpen())
 		{
-			switch (evnt.type)
+			sf::Event evnt;
+			while (window.pollEvent(evnt))
 			{
-			case sf::Event::KeyReleased:
-				switch (evnt.key.code)
+				switch (evnt.type)
 				{
-				case sf::Keyboard::Enter:
-					if (mainmenu.mainMenuPressed() == 0)
+				case sf::Event::KeyReleased:
+					switch (evnt.key.code)
 					{
-						window.close();
-						page_number = 0;
-					}
-					if (mainmenu.mainMenuPressed() == 1)
-					{
-						window.close();
-						page_number = 1;
-					}
-					if (mainmenu.mainMenuPressed() == 2)
-					{
-						window.close();
-						page_number = 2;
-					}
-					break;
+					case sf::Keyboard::Enter:
+						if (mainmenu.mainMenuPressed() == 0)
+						{
+							window.close();
+							page_number = 1;
+						}
+						if (mainmenu.mainMenuPressed() == 1)
+						{
+							window.close();
+							page_number = 2;
+						}
+						if (mainmenu.mainMenuPressed() == 2)
+						{
+							window.close();
+							page_number = 3;
+						}
+						break;
 
-				case sf::Keyboard::Up:
-					mainmenu.moveUp();
-					break;
-				case sf::Keyboard::Down:
-					mainmenu.moveDown();
+					case sf::Keyboard::Up:
+						mainmenu.moveUp();
+						break;
+					case sf::Keyboard::Down:
+						mainmenu.moveDown();
+						break;
+					}
 					break;
 				}
-				break;
-
-			case sf::Event::Closed:
-				window.close();
-				break;
 			}
-		}
 
-		//////Render
-		window.clear(); 
-		window.draw(menubackground);
-		mainmenu.Draw(window);
-		window.display();
+			//////Render
+			window.clear();
+			window.draw(menubackground);
+			mainmenu.Draw(window);
+			window.display();
+		}
 	}
 
-	if (page_number == 0)
+	if (page_number == 1)
 	{
 		//Play
 		sf::RenderWindow window_play(sf::VideoMode(1920, 1080), "Play!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
@@ -180,24 +178,10 @@ int main()
 					switch (evnt.key.code)
 					{
 					case sf::Keyboard::Escape:
-						if (true == isFullscreen)
-						{
-							window_play.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Default);
-
-							isFullscreen = false;
-						}
-						else
-						{
-							window_play.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Fullscreen);
-
-							isFullscreen = true;
-						}
+						window_play.close();
+						page_number = 0;
 						break;
 					}
-					break;
-
-				case sf::Event::Closed:
-					window_play.close();
 					break;
 				}
 
@@ -259,7 +243,7 @@ int main()
 			}
 			else
 				machine.Draw(window_play);
-
+				
 			window_play.display();
 		}
 	}

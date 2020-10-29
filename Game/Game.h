@@ -12,6 +12,7 @@
 #include<SFML/Network.hpp>
 
 #include"MainMenu.h"
+#include"PauseMenu.h"
 
 #include"Player.h"
 #include"Knife.h"
