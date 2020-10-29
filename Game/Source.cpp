@@ -16,7 +16,10 @@ int main()
 
 	//View
 	sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
-	
+
+	//MainMenu
+	MainMenu mainmenu(1920,1080);
+
 	//Grandpa
 	sf::Texture playerTexture;
 	playerTexture.loadFromFile("img/grandpa2.png");
@@ -156,6 +159,10 @@ int main()
 
 		window.clear(); 
 
+		//MainMenu
+		mainmenu.Draw(window);
+
+		//View
 		window.setView(view);
 		window.draw(background);
 

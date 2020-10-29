@@ -1,5 +1,17 @@
-#pragma once
-#include <SFML/Graphics.hpp>
+#ifndef GAME_H
+#define GAME_H
+
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+
+#include<SFML/System.hpp>
+#include<SFML/Window.hpp>
+#include<SFML/Graphics.hpp>
+#include<SFML/Audio.hpp>
+#include<SFML/Network.hpp>
+
+#include"MainMenu.h"
 
 #include"Player.h"
 #include"Knife.h"
@@ -16,3 +28,4 @@ class Game
 {
 };
 
+#endif

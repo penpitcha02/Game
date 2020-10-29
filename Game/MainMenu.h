@@ -1,34 +1,20 @@
-#ifndef MAINMENU_H
-#define MAINMENU_H
-
-#include "Game.h"
-
-class MainMenu:
-	public Game
+#pragma once
+#include <SFML/Graphics.hpp>
+#define Max_main_menu 3
+class MainMenu
 {
-private:
-	//Variables
-	sf::RectangleShape background;
-	sf::Font font;
-
-
-	//Function
-	void initVariables();
-	void initbackground();
-	void initFonts();
-	void initKeybinds();
-	void initButtons();
-
 public:
-	MainMenu(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys);
-	virtual ~MainMenu();
+	MainMenu(float width, float height);
 
-	//Function
-	void endState();
+	void Draw(sf::RenderWindow &window);
+	void moveUp();
+	void moveDown();
 
-	void updateInput(const float& dt);
-	void update(const float& dt);
-	void render(sf::RenderTarget* target = NULL);
+	~MainMenu();
+
+private:
+	int mainMenuSelected;
+	sf::Font font;
+	sf::Text mainMenu[Max_main_menu];
+	
 };
-
-#endif

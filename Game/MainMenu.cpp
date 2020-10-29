@@ -1,34 +1,76 @@
 #include "MainMenu.h"
 
-void MainMenu::initKeybinds()
+MainMenu::MainMenu(float width, float height)
 {
-}
+	if(!font.loadFromFile("arial.ttf")){}
 
-MainMenu::MainMenu(sf::RenderWindow* window, std::map<std::string, int>* supportedKeys) 
-{
-	this->initKeybinds();
+	//Play
+	mainMenu[0].setFont(font);
+	mainMenu[0].setColor(sf::Color::Blue);
+	mainMenu[0].setString("Play");
+	mainMenu[0].setCharacterSize(50);
+	mainMenu[0].setPosition(sf::Vector2f(width / 2 - 50, height / (Max_main_menu + 1)));
 
-	this->background.setSize(sf::Vector2f(window->getSize().x, window->getSize().y));
-	this->background.setFillColor(sf::Color::Magenta);
+	//Score
+	mainMenu[0].setFont(font);
+	mainMenu[0].setColor(sf::Color::White);
+	mainMenu[0].setString("Score");
+	mainMenu[0].setCharacterSize(50);
+	mainMenu[0].setPosition(sf::Vector2f(width / 2 - 50, height / (Max_main_menu + 1) * 2));
+
+	//Quit
+	mainMenu[0].setFont(font);
+	mainMenu[0].setColor(sf::Color::White);
+	mainMenu[0].setString("Quit");
+	mainMenu[0].setCharacterSize(50);
+	mainMenu[0].setPosition(sf::Vector2f(width / 2 - 50, height / (Max_main_menu + 1) * 3));
+
+	mainMenuSelected = 0;
+
 }
 
 MainMenu::~MainMenu()
 {
+
 }
 
-void MainMenu::endState()
+//Draw MainMenu
+void MainMenu::Draw(sf::RenderWindow& window)
 {
+	for (int i = 0; i < 3; i++)
+	{
+		window.draw(mainMenu[i]);
+	}
 }
 
-void MainMenu::updateInput(const float& dt)
+//move up
+void MainMenu::moveUp()
 {
+	if(mainMenuSelected - 1 <= -1)
+	{
+		mainMenu[mainMenuSelected].setColor(sf::Color::White);
+
+		mainMenuSelected--;
+		if (mainMenuSelected == -1)
+		{
+			mainMenuSelected = 2;
+		}
+		mainMenu[mainMenuSelected].setColor(sf::Color::Blue);
+	}
 }
 
-void MainMenu::update(const float& dt)
+//move down
+void MainMenu::moveDown()
 {
-}
+	if (mainMenuSelected + 1 <= Max_main_menu)
+	{
+		mainMenu[mainMenuSelected].setColor(sf::Color::White);
 
-void MainMenu::render(sf::RenderTarget* target)
-{
-	
+		mainMenuSelected++;
+		if (mainMenuSelected == 3)
+		{
+			mainMenuSelected = 0;
+		}
+		mainMenu[mainMenuSelected].setColor(sf::Color::Blue);
+	}
 }
