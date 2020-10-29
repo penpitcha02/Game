@@ -6,6 +6,9 @@ int page_number;
 
 int main()
 {
+	//MainMenu
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+
 	//DeltaTime
 	float deltaTime = 0.0f;
 	sf::Clock clock;
@@ -109,11 +112,7 @@ int main()
 	sf::Texture backgroundTexture;
 	backgroundTexture.loadFromFile("img/background4.png");
 	background.setTexture(&backgroundTexture);
-
-	if (page_number == 0)
-	{
-		//MainMenu
-		sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+	
 		while (window.isOpen())
 		{
 			sf::Event evnt;
@@ -159,7 +158,6 @@ int main()
 			mainmenu.Draw(window);
 			window.display();
 		}
-	}
 
 	if (page_number == 1)
 	{
@@ -245,6 +243,57 @@ int main()
 				machine.Draw(window_play);
 				
 			window_play.display();
+		}
+	}
+
+	if (page_number == 0)
+	{
+		//MainMenu
+		sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+		while (window.isOpen())
+		{
+			sf::Event evnt;
+			while (window.pollEvent(evnt))
+			{
+				switch (evnt.type)
+				{
+				case sf::Event::KeyReleased:
+					switch (evnt.key.code)
+					{
+					case sf::Keyboard::Return:
+						if (mainmenu.mainMenuPressed() == 0)
+						{
+							window.close();
+							page_number = 1;
+						}
+						if (mainmenu.mainMenuPressed() == 1)
+						{
+							window.close();
+							page_number = 2;
+						}
+						if (mainmenu.mainMenuPressed() == 2)
+						{
+							window.close();
+							page_number = 3;
+						}
+						break;
+
+					case sf::Keyboard::Up:
+						mainmenu.moveUp();
+						break;
+					case sf::Keyboard::Down:
+						mainmenu.moveDown();
+						break;
+					}
+					break;
+				}
+			}
+
+			//////Render
+			window.clear();
+			window.draw(menubackground);
+			mainmenu.Draw(window);
+			window.display();
 		}
 	}
 	return 0;
