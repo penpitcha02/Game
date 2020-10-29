@@ -2,6 +2,8 @@
 #include <iostream>
 #include "Game.h"
 
+int page_number;
+
 int main()
 {
 	//Window
@@ -97,6 +99,13 @@ int main()
 	shopTexture.loadFromFile("img/shop.png");
 	shop.setTexture(&shopTexture);
 
+	//MenuBackground
+	sf::RectangleShape menubackground(sf::Vector2f(1920.0f, 1080.0f));
+	menubackground.setPosition(0.0f, 00.0f);
+	sf::Texture menubackgroundTexture;
+	menubackgroundTexture.loadFromFile("img/Menubackground.png");
+	menubackground.setTexture(&menubackgroundTexture);
+
 	//Background
 	sf::RectangleShape background(sf::Vector2f(5760.0f, 1080.0f));
 	background.setPosition(-960.0f, 40.0f);
@@ -106,8 +115,6 @@ int main()
 
 	while (window.isOpen())
 	{
-		deltaTime = clock.restart().asSeconds();
-
 		sf::Event evnt;
 		while (window.pollEvent(evnt))
 		{
@@ -116,93 +123,145 @@ int main()
 			case sf::Event::KeyReleased:
 				switch (evnt.key.code)
 				{
-				case sf::Keyboard::Return:
-					if (true == isFullscreen)
+				case sf::Keyboard::Enter:
+					if (mainmenu.mainMenuPressed() == 0)
 					{
-						window.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Default);
-
-						isFullscreen = false;
+						window.close();
+						page_number = 0;
 					}
-					else
+					if (mainmenu.mainMenuPressed() == 1)
 					{
-						window.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Fullscreen);
-
-						isFullscreen = true;
+						window.close();
+						page_number = 1;
 					}
-
+					if (mainmenu.mainMenuPressed() == 2)
+					{
+						window.close();
+						page_number = 2;
+					}
 					break;
 
+				case sf::Keyboard::Up:
+					mainmenu.moveUp();
+					break;
+				case sf::Keyboard::Down:
+					mainmenu.moveDown();
+					break;
 				}
-
 				break;
 
 			case sf::Event::Closed:
 				window.close();
 				break;
 			}
-
 		}
-
-		player.Update(deltaTime);
-		knife.Update(deltaTime);
-		sword.Update(deltaTime);
-
-		machineanimation.Update(deltaTime);
-
-		treeanimation.Update(deltaTime);
-		treeanimation2.Update(deltaTime);
-		treeanimation3.Update(deltaTime);
-
-		view.setCenter(player.GetPosition());
 
 		//////Render
-
 		window.clear(); 
-
-		//MainMenu
+		window.draw(menubackground);
 		mainmenu.Draw(window);
-
-		//View
-		window.setView(view);
-		window.draw(background);
-
-		//Tree
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
-			treeanimation.Draw(window);
-		else
-			window.draw(tree);
-
-		//Tree2
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
-			treeanimation2.Draw(window);
-		else
-			window.draw(tree2);
-
-		//Tree
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
-			treeanimation3.Draw(window);
-		else
-			window.draw(tree3);
-
-		//Weapon
-		sword.Draw(window);
-		player.Draw(window); 
-		knife.Draw(window);
-
-		//Shop
-		window.draw(shop);
-
-		//Machine
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-		{
-			if(machine.isMouseOver(window))
-			machineanimation.Draw(window);
-		}
-		else
-			machine.Draw(window);
-
 		window.display();
 	}
 
+	if (page_number == 0)
+	{
+		//Play
+		sf::RenderWindow window_play(sf::VideoMode(1920, 1080), "Play!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Fullscreen);
+		while (window_play.isOpen())
+		{
+			deltaTime = clock.restart().asSeconds();
+
+			sf::Event evnt;
+			while (window_play.pollEvent(evnt))
+			{
+				switch (evnt.type)
+				{
+				case sf::Event::KeyReleased:
+					switch (evnt.key.code)
+					{
+					case sf::Keyboard::Escape:
+						if (true == isFullscreen)
+						{
+							window_play.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Close | sf::Style::Titlebar | sf::Style::Default);
+
+							isFullscreen = false;
+						}
+						else
+						{
+							window_play.create(sf::VideoMode(1920, 1080), "Game!", sf::Style::Fullscreen);
+
+							isFullscreen = true;
+						}
+						break;
+					}
+					break;
+
+				case sf::Event::Closed:
+					window_play.close();
+					break;
+				}
+
+			}
+
+			player.Update(deltaTime);
+			knife.Update(deltaTime);
+			sword.Update(deltaTime);
+
+			machineanimation.Update(deltaTime);
+
+			treeanimation.Update(deltaTime);
+			treeanimation2.Update(deltaTime);
+			treeanimation3.Update(deltaTime);
+
+			view.setCenter(player.GetPosition());
+
+			//////Render
+
+			window_play.clear();
+
+			//View
+			window_play.setView(view);
+
+			//Background
+			window_play.draw(background);
+
+			//Tree
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+				treeanimation.Draw(window_play);
+			else
+				window_play.draw(tree);
+
+			//Tree2
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+				treeanimation2.Draw(window_play);
+			else
+				window_play.draw(tree2);
+
+			//Tree
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+				treeanimation3.Draw(window_play);
+			else
+				window_play.draw(tree3);
+
+			//Weapon
+			sword.Draw(window_play);
+			player.Draw(window_play);
+			knife.Draw(window_play);
+
+			//Shop
+			window_play.draw(shop);
+
+			//Machine
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				if (machine.isMouseOver(window_play))
+					machineanimation.Draw(window_play);
+			}
+			else
+				machine.Draw(window_play);
+
+			window_play.display();
+		}
+	}
 	return 0;
 }

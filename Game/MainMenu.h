@@ -10,11 +10,14 @@ public:
 	void moveUp();
 	void moveDown();
 
+	int mainMenuPressed()
+	{
+		return mainMenuSelected;
+	}
 	~MainMenu();
 
 private:
 	int mainMenuSelected;
 	sf::Font font;
 	sf::Text mainMenu[Max_main_menu];
-	
 };
