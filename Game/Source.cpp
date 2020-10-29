@@ -124,7 +124,7 @@ int main()
 				case sf::Event::KeyReleased:
 					switch (evnt.key.code)
 					{
-					case sf::Keyboard::Enter:
+					case sf::Keyboard::Return:
 						if (mainmenu.mainMenuPressed() == 0)
 						{
 							window.close();
