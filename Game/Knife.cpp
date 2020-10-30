@@ -9,7 +9,7 @@ Knife::Knife(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, fl
 
 	knife.setSize(sf::Vector2f(375.0f, 531.25f));
 	knife.setOrigin(knife.getSize().x / 2.0f, knife.getSize().x / 4.0f);
-	knife.setPosition(1920.0f, 575.0f);
+	knife.setPosition(1920.0f, 540.0f);
 	knife.setTexture(texture);
 }
 

@@ -9,7 +9,7 @@ Treeanimation3::Treeanimation3(sf::Texture* texture, sf::Vector2u imageCount, fl
 
 	treeanimation3.setSize(sf::Vector2f(960.0f, 1080.0f));
 	treeanimation3.setOrigin(treeanimation3.getSize().x / 2.0f, 0);
-	treeanimation3.setPosition(850.0f, 40.0f);
+	treeanimation3.setPosition(850.0f, 0.0f);
 	treeanimation3.setTexture(texture);
 }
 

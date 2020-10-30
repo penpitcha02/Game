@@ -112,7 +112,7 @@ int main()
 
 		sf::RectangleShape tree(sf::Vector2f(960.0f, 1080.0f));
 		tree.setOrigin(tree.getSize().x / 2.0f, 0);
-		tree.setPosition(0.0f, 40.0f);
+		tree.setPosition(0.0f, 0.0f);
 		sf::Texture treeTexture;
 		treeTexture.loadFromFile("img/tree.png");
 		tree.setTexture(&treeTexture);
@@ -125,7 +125,7 @@ int main()
 
 		sf::RectangleShape tree2(sf::Vector2f(960.0f, 1080.0f));
 		tree2.setOrigin(tree2.getSize().x / 2.0f, 0);
-		tree2.setPosition(1700.0f, 40.0f);
+		tree2.setPosition(1700.0f, 0.0f);
 		sf::Texture tree2Texture;
 		tree2Texture.loadFromFile("img/tree2.png");
 		tree2.setTexture(&tree2Texture);
@@ -138,7 +138,7 @@ int main()
 
 		sf::RectangleShape tree3(sf::Vector2f(960.0f, 1080.0f));
 		tree3.setOrigin(tree3.getSize().x / 2.0f, 0);
-		tree3.setPosition(820.0f, 40.0f);
+		tree3.setPosition(820.0f, 0.0f);
 		sf::Texture tree3Texture;
 		tree3Texture.loadFromFile("img/tree3.png");
 		tree3.setTexture(&tree3Texture);
@@ -151,14 +151,14 @@ int main()
 
 		//Shop
 		sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
-		shop.setPosition(-960.0f, 40.0f);
+		shop.setPosition(-960.0f, 0.0f);
 		sf::Texture shopTexture;
 		shopTexture.loadFromFile("img/shop.png");
 		shop.setTexture(&shopTexture);
 
 		//Background
 		sf::RectangleShape background(sf::Vector2f(5760.0f, 1080.0f));
-		background.setPosition(-960.0f, 40.0f);
+		background.setPosition(-960.0f, 0.0f);
 		sf::Texture backgroundTexture;
 		backgroundTexture.loadFromFile("img/background4.png");
 		background.setTexture(&backgroundTexture);
@@ -200,7 +200,7 @@ int main()
 			treeanimation2.Update(deltaTime);
 			treeanimation3.Update(deltaTime);
 
-			coconut1.Movement(deltaTime);
+		
 
 			view.setCenter(player.GetPosition());
 
@@ -215,25 +215,28 @@ int main()
 			window_play.draw(background);
 
 			//Tree
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+			if (evnt.key.code == sf::Keyboard::Z)
 				treeanimation.Draw(window_play);
 			else
 				window_play.draw(tree);
 
 			//Tree2
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+			if (evnt.key.code == sf::Keyboard::C)
 				treeanimation2.Draw(window_play);
 			else
 				window_play.draw(tree2);
 
 			//Tree3
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
+			if (evnt.key.code == sf::Keyboard::X)
 				treeanimation3.Draw(window_play);
 			else
 				window_play.draw(tree3);
 
 			//Coconut1
-			coconut1.Draw(window_play);
+			if (evnt.key.code == sf::Keyboard::Space)
+			{
+				coconut1.Draw(window_play);
+			}
 
 			//Player&Weapon
 			sword.Draw(window_play);

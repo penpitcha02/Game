@@ -9,7 +9,7 @@ Machineanimation::Machineanimation(sf::Texture* texture, sf::Vector2u imageCount
 
 	machineanimation.setSize(sf::Vector2f(375.0f, 531.25f));
 	machineanimation.setOrigin(machineanimation.getSize().x / 2.0f, 0);
-	machineanimation.setPosition(2800.0f, 500.0f);
+	machineanimation.setPosition(2800.0f, 460.0f);
 	machineanimation.setTexture(texture);
 
 }

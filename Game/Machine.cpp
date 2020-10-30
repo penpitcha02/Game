@@ -3,7 +3,7 @@
 Machine::Machine(sf::Texture* texture)
 {
 	machine.setSize(sf::Vector2f(375.0f, 531.25f));
-	machine.setPosition(2560.0f, 440.0f);
+	machine.setPosition(2560.0f, 400.0f);
 	machine.setTexture(texture);
 }
 
