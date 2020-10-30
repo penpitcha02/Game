@@ -66,7 +66,7 @@ int main()
 			window.display();
 		}
 
-		//DeltaTime
+		//Animation Time
 		float deltaTime = 0.0f;
 		sf::Clock clock;
 
@@ -86,6 +86,7 @@ int main()
 
 		Knife knife(&knifeTexture, sf::Vector2u(4, 2), 0.3f, 500.0f);
 
+
 		//Sword
 		sf::Texture swordTexture;
 		swordTexture.loadFromFile("img/sword.png");
@@ -103,6 +104,7 @@ int main()
 		machineTexture.loadFromFile("img/machine.png");
 
 		Machine machine(&machineTexture);
+
 
 		//Tree
 		sf::Texture treeanimationTexture;
@@ -143,11 +145,13 @@ int main()
 		tree3Texture.loadFromFile("img/tree3.png");
 		tree3.setTexture(&tree3Texture);
 
+
 		//Coconut1
 		sf::Texture coconut1Texture;
 		coconut1Texture.loadFromFile("img/coconut1.png");
 
 		Coconut1 coconut1(&coconut1Texture,500.0f);
+
 
 		//Shop
 		sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
@@ -155,6 +159,7 @@ int main()
 		sf::Texture shopTexture;
 		shopTexture.loadFromFile("img/shop.png");
 		shop.setTexture(&shopTexture);
+
 
 		//Background
 		sf::RectangleShape background(sf::Vector2f(5760.0f, 1080.0f));
