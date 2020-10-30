@@ -143,6 +143,12 @@ int main()
 		tree3Texture.loadFromFile("img/tree3.png");
 		tree3.setTexture(&tree3Texture);
 
+		//Coconut1
+		sf::Texture coconut1Texture;
+		coconut1Texture.loadFromFile("img/coconut1.png");
+
+		Coconut1 coconut1(&coconut1Texture,500.0f);
+
 		//Shop
 		sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
 		shop.setPosition(-960.0f, 40.0f);
@@ -194,6 +200,8 @@ int main()
 			treeanimation2.Update(deltaTime);
 			treeanimation3.Update(deltaTime);
 
+			coconut1.Movement(deltaTime);
+
 			view.setCenter(player.GetPosition());
 
 			//////Render
@@ -218,13 +226,16 @@ int main()
 			else
 				window_play.draw(tree2);
 
-			//Tree
+			//Tree3
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 				treeanimation3.Draw(window_play);
 			else
 				window_play.draw(tree3);
 
-			//Weapon
+			//Coconut1
+			coconut1.Draw(window_play);
+
+			//Player&Weapon
 			sword.Draw(window_play);
 			player.Draw(window_play);
 			knife.Draw(window_play);
@@ -244,7 +255,6 @@ int main()
 			window_play.display();
 		}
 	}
-	
 	return 0;
 }
 
