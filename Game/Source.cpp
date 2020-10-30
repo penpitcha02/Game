@@ -64,11 +64,13 @@ int main()
 			window.draw(menubackground);
 			mainmenu.Draw(window);
 			window.display();
+			window.setFramerateLimit(60);
 		}
 
 		//Animation Time
 		float deltaTime = 0.0f;
 		sf::Clock clock;
+
 
 		//View
 		sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
@@ -110,7 +112,7 @@ int main()
 		sf::Texture treeanimationTexture;
 		treeanimationTexture.loadFromFile("img/treeanimation.png");
 
-		Treeanimation treeanimation(&treeanimationTexture, sf::Vector2u(4, 1), 0.25f, 500.0f);
+		Treeanimation treeanimation(&treeanimationTexture, sf::Vector2u(4, 1), 0.25f, 500.0f,0);
 
 		sf::RectangleShape tree(sf::Vector2f(960.0f, 1080.0f));
 		tree.setOrigin(tree.getSize().x / 2.0f, 0);
@@ -261,6 +263,7 @@ int main()
 				machine.Draw(window_play);
 				
 			window_play.display();
+			window_play.setFramerateLimit(60);
 		}
 	}
 	return 0;

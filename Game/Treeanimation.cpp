@@ -1,9 +1,10 @@
 #include "Treeanimation.h"
 
-Treeanimation::Treeanimation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed) :
+Treeanimation::Treeanimation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, int Timee) :
 	animation2(texture, imageCount, switchTime)
 {
 	this->speed = speed;
+	Timer = Timee;
 	row = 0;
 
 
