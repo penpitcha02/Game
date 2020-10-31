@@ -5,10 +5,11 @@
 class Treeanimation
 {
 public:
-	Treeanimation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, int Timee);
+	Treeanimation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
 	~Treeanimation();
 
 	void Update(float deltaTime);
+	void StartDraw();
 	void Draw(sf::RenderWindow& window);
 
 	sf::Vector2f GetPosition() { return treeanimation.getPosition(); }
@@ -19,7 +20,7 @@ private:
 	Animation2 animation2;
 	unsigned int row;
 	float speed;
-	int Timer;
+	int counter;
 };
 
 

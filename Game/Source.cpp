@@ -1,8 +1,30 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
-#include "Game.h"
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+
+#include<SFML/System.hpp>
+#include<SFML/Window.hpp>
+#include<SFML/Graphics.hpp>
+#include<SFML/Audio.hpp>
+#include<SFML/Network.hpp>
+
+#include"MainMenu.h"
+#include"PauseMenu.h"
+
+#include"Player.h"
+#include"Knife.h"
+#include"Sword.h"
+
+#include"Machine.h"
+#include"Machineanimation.h"
+
+#include"Treeanimation.h"
+#include"Treeanimation2.h"
+#include"Treeanimation3.h"
 
 int page_number;
+
+int counter = 180;
 
 int main()
 {
@@ -112,7 +134,7 @@ int main()
 		sf::Texture treeanimationTexture;
 		treeanimationTexture.loadFromFile("img/treeanimation.png");
 
-		Treeanimation treeanimation(&treeanimationTexture, sf::Vector2u(4, 1), 0.25f, 500.0f,0);
+		Treeanimation treeanimation(&treeanimationTexture, sf::Vector2u(4, 1), 0.25f, 500.0f);
 
 		sf::RectangleShape tree(sf::Vector2f(960.0f, 1080.0f));
 		tree.setOrigin(tree.getSize().x / 2.0f, 0);
@@ -149,11 +171,12 @@ int main()
 
 
 		//Coconut1
+		sf::RectangleShape coconut1(sf::Vector2f(375.0f, 531.25f));
+		coconut1.setPosition(0.0f, 0.0f);
 		sf::Texture coconut1Texture;
 		coconut1Texture.loadFromFile("img/coconut1.png");
-
-		Coconut1 coconut1(&coconut1Texture,500.0f);
-
+		coconut1.setTexture(&coconut1Texture);
+		
 
 		//Shop
 		sf::RectangleShape shop(sf::Vector2f(5760.0f, 1080.0f));
@@ -178,7 +201,7 @@ int main()
 		while (window_play.isOpen())
 		{
 			deltaTime = clock.restart().asSeconds();
-
+			
 			sf::Event evnt;
 			while (window_play.pollEvent(evnt))
 			{
@@ -207,8 +230,11 @@ int main()
 			treeanimation2.Update(deltaTime);
 			treeanimation3.Update(deltaTime);
 
-		
-
+			if (evnt.key.code == sf::Keyboard::Space)
+			{
+				coconut1.move(0.f, 10.0f);
+			}
+			
 			view.setCenter(player.GetPosition());
 
 			//////Render
@@ -222,8 +248,11 @@ int main()
 			window_play.draw(background);
 
 			//Tree
-			if (evnt.key.code == sf::Keyboard::Z)
+			if (evnt.key.code == sf::Keyboard::Z && counter > 0)
+			{
 				treeanimation.Draw(window_play);
+				--counter;
+			}
 			else
 				window_play.draw(tree);
 
@@ -242,7 +271,7 @@ int main()
 			//Coconut1
 			if (evnt.key.code == sf::Keyboard::Space)
 			{
-				coconut1.Draw(window_play);
+				window_play.draw(coconut1);
 			}
 
 			//Player&Weapon
