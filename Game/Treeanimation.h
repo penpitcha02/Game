@@ -8,6 +8,7 @@ public:
 	Treeanimation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
 	~Treeanimation();
 
+	void Tree(sf::Texture* texture);
 	void Update(float deltaTime);
 	void StartDraw();
 	void Draw(sf::RenderWindow& window);
@@ -16,11 +17,12 @@ public:
 
 
 private:
+	sf::RectangleShape tree;
 	sf::RectangleShape treeanimation;
 	Animation2 animation2;
 	unsigned int row;
 	float speed;
-	int counter;
+	unsigned int counter;
 };
 
 

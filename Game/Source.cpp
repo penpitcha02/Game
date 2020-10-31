@@ -93,7 +93,6 @@ int main()
 		float deltaTime = 0.0f;
 		sf::Clock clock;
 
-
 		//View
 		sf::View view(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(1920.0f, 1080.0f));
 
@@ -136,12 +135,10 @@ int main()
 
 		Treeanimation treeanimation(&treeanimationTexture, sf::Vector2u(4, 1), 0.25f, 500.0f);
 
-		sf::RectangleShape tree(sf::Vector2f(960.0f, 1080.0f));
-		tree.setOrigin(tree.getSize().x / 2.0f, 0);
-		tree.setPosition(0.0f, 0.0f);
 		sf::Texture treeTexture;
 		treeTexture.loadFromFile("img/tree.png");
-		tree.setTexture(&treeTexture);
+
+		treeanimation.Tree(&treeTexture);
 
 		//Tree2
 		sf::Texture treeanimation2Texture;
@@ -201,7 +198,7 @@ int main()
 		while (window_play.isOpen())
 		{
 			deltaTime = clock.restart().asSeconds();
-			
+
 			sf::Event evnt;
 			while (window_play.pollEvent(evnt))
 			{
@@ -248,13 +245,7 @@ int main()
 			window_play.draw(background);
 
 			//Tree
-			if (evnt.key.code == sf::Keyboard::Z && counter > 0)
-			{
-				treeanimation.Draw(window_play);
-				--counter;
-			}
-			else
-				window_play.draw(tree);
+			treeanimation.Draw(window_play);
 
 			//Tree2
 			if (evnt.key.code == sf::Keyboard::C)
@@ -283,13 +274,13 @@ int main()
 			window_play.draw(shop);
 
 			//Machine
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			if (evnt.key.code == sf::Mouse::Left)
 			{
-				if (machine.isMouseOver(window_play))
-					machineanimation.Draw(window_play);
+				machineanimation.Draw(window_play);
 			}
 			else
 				machine.Draw(window_play);
+
 				
 			window_play.display();
 			window_play.setFramerateLimit(60);
