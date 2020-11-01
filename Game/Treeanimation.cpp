@@ -41,11 +41,10 @@ void Treeanimation::StartDraw()
 
 void Treeanimation::Draw(sf::RenderWindow& window)
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) 
+	if (counter > 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
 		StartDraw();
-		if(counter > 0)
-			window.draw(treeanimation);
+		window.draw(treeanimation);
 	}
 	else
 	{

@@ -36,7 +36,7 @@ int main()
 
 		//MenuBackground
 		sf::RectangleShape menubackground(sf::Vector2f(1920.0f, 1080.0f));
-		menubackground.setPosition(0.0f, 00.0f);
+		menubackground.setPosition(0.0f, 0.0f);
 		sf::Texture menubackgroundTexture;
 		menubackgroundTexture.loadFromFile("img/Menubackground.png");
 		menubackground.setTexture(&menubackgroundTexture);
