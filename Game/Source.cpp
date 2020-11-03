@@ -284,6 +284,7 @@ int main()
 				
 			window_play.display();
 			window_play.setFramerateLimit(60);
+
 		}
 	}
 	return 0;
