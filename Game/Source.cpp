@@ -29,7 +29,7 @@ int counter = 180;
 int main()
 {
 		//MainMenu
-		sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Fullscreen);
+	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game!", sf::Style::Titlebar | sf::Style::Close);
 
 		//MainMenu Text
 		MainMenu mainmenu(1920,1080);
@@ -194,7 +194,7 @@ int main()
 	if (page_number == 1)
 	{
 		//Play
-		sf::RenderWindow window_play(sf::VideoMode(1920, 1080), "Play!", sf::Style::Fullscreen);
+		sf::RenderWindow window_play(sf::VideoMode(1920, 1080), "Play!", sf::Style::Titlebar | sf::Style::Close);
 		while (window_play.isOpen())
 		{
 			deltaTime = clock.restart().asSeconds();
